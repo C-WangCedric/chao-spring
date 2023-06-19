@@ -1,16 +1,18 @@
 package org.springframework.beans.factory.support;
 
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeansException;
+import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 
 /**
  * 抽象创建bean的工厂
+ * 不直接实现实现BeanFactory，而是实现他的子接口
  * @author WangChao
  * @version 1.0
  * @date 2023/6/14 12:13
  */
-public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements BeanFactory {
+public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry implements ConfigurableBeanFactory {
 
     @Override
     public Object getBean(String beanName) throws BeansException {
@@ -20,6 +22,11 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
         }
         BeanDefinition beanDefinition = getBeanDefinition(beanName);
         return createBean(beanName,beanDefinition);
+    }
+
+    @Override
+    public <T> T getBean(String name, Class<T> requiredType) throws BeansException{
+        return (T)getBean(name);
     }
 
     /**
