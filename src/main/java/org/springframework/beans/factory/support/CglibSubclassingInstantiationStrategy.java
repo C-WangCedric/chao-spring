@@ -13,7 +13,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 public class CglibSubclassingInstantiationStrategy implements InstantiationStrategy{
 
     /**
-     * 使用CGLIB动台生成子类
+     * 使用CGLIB动态生成子类
      * @param beanDefinition
      * @return
      * @throws BeansException
