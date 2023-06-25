@@ -1,4 +1,4 @@
-package org.springframework.beans.factory;
+package org.springframework.beans;
 
 /**
  * bean属性信息
