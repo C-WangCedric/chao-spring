@@ -52,7 +52,7 @@ public abstract class AbstractBeanFactory extends DefaultSingletonBeanRegistry i
     protected abstract BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
     @Override
-    public void addBeanPostProcessor(BeanPostProcessor   beanPostProcessor) {
+    public void addBeanPostProcessor(BeanPostProcessor beanPostProcessor) {
         //有则覆盖
         this.beanPostProcessors.remove(beanPostProcessor);
         this.beanPostProcessors.add(beanPostProcessor);
