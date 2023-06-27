@@ -24,6 +24,7 @@ public class BeanFactoryPostProcessorAndBeanPostProcessorTest {
         CustomBeanFactoryPostProcessor beanFactoryPostProcessor = new CustomBeanFactoryPostProcessor();
         beanFactoryPostProcessor.postProcessBeanFactory(beanFactory);
 
+        //执行替换
         Person person = (Person)beanFactory.getBean("person");
         System.out.println(person.getName());
     }
