@@ -7,5 +7,10 @@ package org.springframework.beans.factory.config;
  * @date 2023/6/14 12:09
  */
 public interface SingletonBeanRegistry {
+    /**
+     * 获取单例bean对象
+     * @param beanName
+     * @return
+     */
     Object getSingleton(String beanName);
 }
