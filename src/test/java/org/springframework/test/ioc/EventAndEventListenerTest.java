@@ -2,7 +2,7 @@ package org.springframework.test.ioc;
 
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.test.ioc.common.event.CustomEvent;
+import org.springframework.test.common.event.CustomEvent;
 
 /**
  * @author WangChao
@@ -11,7 +11,7 @@ import org.springframework.test.ioc.common.event.CustomEvent;
  */
 public class EventAndEventListenerTest {
     @Test
-    public void testEventListener() throws Exception {
+    public void testEventListener() {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:event-and-event-listener.xml");
         //发布事件
         applicationContext.publishEvent(new CustomEvent(applicationContext));
