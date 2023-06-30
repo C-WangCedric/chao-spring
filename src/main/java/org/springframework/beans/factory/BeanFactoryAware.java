@@ -1,5 +1,7 @@
 package org.springframework.beans.factory;
 
+import org.springframework.beans.BeansException;
+
 /**
  * @author WangChao
  * @version 1.0
@@ -8,7 +10,9 @@ package org.springframework.beans.factory;
 public interface BeanFactoryAware extends Aware{
     /**
      * 设置所属BeanFactory
+     *
      * @param beanFactory
+     * @throws BeansException
      */
-    void setBeanFactory(BeanFactory beanFactory);
+    void setBeanFactory(BeanFactory beanFactory) throws BeansException;
 }

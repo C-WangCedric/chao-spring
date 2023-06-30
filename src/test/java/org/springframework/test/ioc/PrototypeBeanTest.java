@@ -3,7 +3,7 @@ package org.springframework.test.ioc;
 import cn.hutool.core.lang.Assert;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.test.ioc.bean.Car;
+import org.springframework.test.bean.Car;
 
 /**
  * @author WangChao
