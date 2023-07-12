@@ -1,14 +1,18 @@
 package org.springframework.test.aop;
 
+import org.aopalliance.intercept.MethodInterceptor;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.aop.AdvisedSupport;
+import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.aop.MethodMatcher;
 import org.springframework.aop.TargetSource;
 import org.springframework.aop.aspectj.AspectJExpressionPointcut;
 import org.springframework.aop.framework.CglibAopProxy;
 import org.springframework.aop.framework.JdkDynamicAopProxy;
 import org.springframework.aop.framework.ProxyFactory;
+import org.springframework.aop.framework.adapter.MethodBeforeAdviceInterceptor;
+import org.springframework.test.common.WorldServiceBeforeAdvice;
 import org.springframework.test.common.WorldServiceInterceptor;
 import org.springframework.test.service.WorldService;
 import org.springframework.test.service.WorldServiceImpl;
@@ -60,5 +64,17 @@ public class DynamicProxyTest {
         support.setProxyTargetClass(true);
         WorldService worldService2 = (WorldService)new ProxyFactory(support).getProxy();
         worldService2.explode();
+    }
+
+    @Test
+    public void testBeforeAdvice() throws Exception{
+        //设置BeforeAdvice
+        MethodBeforeAdvice beforeAdvice = new WorldServiceBeforeAdvice();
+        MethodBeforeAdviceInterceptor methodBeforeAdviceInterceptor = new MethodBeforeAdviceInterceptor(beforeAdvice);
+        // 定义拦截类，在代理方法执行时候处理一些操作
+        support.setMethodInterceptor(methodBeforeAdviceInterceptor);
+
+        WorldService proxy = (WorldService) new ProxyFactory(support).getProxy();
+        proxy.explode();
     }
 }
